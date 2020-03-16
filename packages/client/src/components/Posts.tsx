@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import Post from './Post'
+import NoPosts from './NoPosts'
 import { Post as PostType } from '../types.d'
 
 export const GET_POSTS = gql`
@@ -22,6 +23,7 @@ function Posts() {
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error :(</p>
+  if (data.posts.length === 0) return <NoPosts />
 
   return (
     <div>
