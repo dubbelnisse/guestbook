@@ -1,0 +1,51 @@
+{
+  "name": "guestbook",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node ./build/lib/server.js",
+    "build": "tsc",
+    "dev": "ts-node-dev --no-notify --ignore-watch node_modules lib/server.ts",
+    "generate": "graphql-codegen --config codegen.yml",
+    "migrate:up": "knex migrate:latest --env dev",
+    "migrate:down": "knex migrate:rollback --all --env dev",
+    "migrate:up:prod": "knex migrate:latest --env production",
+    "migrate:down:prod": "knex migrate:rollback --all --env production"
+  },
+  "keywords": [
+    "graphql",
+    "apollo"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@iteam/config": "^12.1.0",
+    "apollo-server-express": "2.9.6",
+    "express": "4.17.1",
+    "github-oauth": "^0.2.2",
+    "got": "^10.6.0",
+    "graphql-directive-auth": "^0.3.2",
+    "knex": "^0.20.11",
+    "lodash.merge": "4.6.2",
+    "pg": "^7.18.2"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "1.8.1",
+    "@graphql-codegen/typescript": "1.8.1",
+    "@graphql-codegen/typescript-resolvers": "1.8.1",
+    "@iteam/eslint-config-node": "0.3.0",
+    "@types/lodash.merge": "4.6.6",
+    "eslint": "6.8.0",
+    "husky": "4.2.3",
+    "jest": "25.1.0",
+    "jest-watch-typeahead": "0.4.2",
+    "prettier": "1.19.1",
+    "pretty-quick": "2.0.1",
+    "ts-node-dev": "1.0.0-pre.43",
+    "typescript": "3.6.4"
+  }
+}
