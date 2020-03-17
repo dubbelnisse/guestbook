@@ -25,6 +25,8 @@ const H1 = styled.h1`
 `
 
 const Textarea = styled.textarea`
+  background-color:  rgb(21, 26, 57);
+  color: rgb(255, 255, 255);
   padding: 20px;
   width: calc(100% - 40px);
 `
