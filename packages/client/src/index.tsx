@@ -11,6 +11,7 @@ import {
   Redirect
 } from "react-router-dom"
 import { parse } from 'query-string'
+import { setLogin } from './helpers/auth'
 
 const client = new ApolloClient({
   uri: `${process.env.REACT_APP_API_BASE_URI}/graphql`,
@@ -25,16 +26,12 @@ const client = new ApolloClient({
   }
 })
 
-const setLogin = (bearer: any) => {
-  localStorage.setItem('token', bearer)
-}
-
 const RootApp = () => (
   <ApolloProvider client={client}>
     <Router>
       <Switch>
         <Route path="/auth/github/callback" render={(props) => {
-          const { access_token } = parse(props.location.search)
+          const { access_token} = parse(props.location.search)
           setLogin(access_token)
           return <Redirect to="/" />
         }}/>

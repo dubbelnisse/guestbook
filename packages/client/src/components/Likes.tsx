@@ -1,26 +1,23 @@
 import React, { MouseEvent } from 'react'
 import styled from 'styled-components'
 import { useMutation } from '@apollo/react-hooks'
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 import { GET_POSTS } from './Posts'
 
 const LIKE_POST = gql`
   mutation LikePost($post_id: String!) {
     likePost(post_id: $post_id)
   }
-`;
+`
 
 const Wrapper = styled.div`
   background-color: rgb(102, 108, 158);
   cursor: pointer;
-  position: absolute;
   border-radius: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px 10px;
-  top: 30px;
-  right: 30px;
   opacity: 0.8;
   transition: opacity .25s ease-in-out;
   -moz-transition: opacity .25s ease-in-out;

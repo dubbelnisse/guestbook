@@ -3,6 +3,7 @@ import { Post as PostType } from '../types.d'
 import styled from 'styled-components'
 import Avatar from './Avatar'
 import Likes from './Likes'
+import DeletePost from './DeletePost'
 import { format } from 'date-fns'
 
 const Wrapper = styled.div`
@@ -38,6 +39,15 @@ const Text = styled.div`
   margin-top: 30px;
 `
 
+const CtaButtons = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 10px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+`
+
 interface PostProps {
   post: PostType
 }
@@ -53,7 +63,10 @@ const Post: React.FC<PostProps> = ({ post }) => {
         </Header>
         <Text>{post.text}</Text>
       </Message>
-      <Likes likes={post.likes} postId={post.id} />
+      <CtaButtons>
+        <DeletePost postId={post.id} githubId={post.author_id} />
+        <Likes likes={post.likes} postId={post.id} />
+      </CtaButtons>
     </Wrapper>
   )
 }

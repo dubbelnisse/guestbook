@@ -3,6 +3,7 @@ import Posts from '../components/Posts'
 import styled from 'styled-components'
 import WritePost from '../components/WritePost'
 import Login from '../components/Login'
+import { isLoggedIn } from '../helpers/auth'
 
 const Wrapper = styled.div`
   display: grid;
@@ -14,12 +15,10 @@ const Content = styled.div`
 `
 
 function App() {
-  const hasToken = localStorage.getItem('token')
-
   return (
     <Wrapper>
       <Content>
-        {hasToken ? <WritePost /> : <Login />}
+        {isLoggedIn() ? <WritePost /> : <Login />}
         <Posts />
       </Content>
     </Wrapper>

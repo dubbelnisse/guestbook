@@ -10,6 +10,7 @@ export const GET_POSTS = gql`
     posts {
       id
       text
+      author_id
       author_name
       author_avatar
       created
