@@ -109,6 +109,10 @@ export const resolvers: IResolvers = {
         throw new AuthenticationError('Unauthorized access!')
       }
 
+      await db('likes')
+        .where('post_id', post_id)
+        .del()
+
       await db('posts')
         .where('id', post_id)
         .del()
