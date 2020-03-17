@@ -52,6 +52,7 @@ export type Post = {
    __typename?: 'Post',
   id: Scalars['String'],
   text: Scalars['String'],
+  author_id: Scalars['String'],
   author_name: Scalars['String'],
   author_avatar: Scalars['String'],
   likes: Maybe<Scalars['Int']>,
@@ -204,6 +205,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 export type PostResolvers<ContextType = any, ParentType extends ResolversParentTypes['Post'] = ResolversParentTypes['Post']> = {
   id: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   text: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  author_id: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   author_name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   author_avatar: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   likes: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,

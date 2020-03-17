@@ -7,6 +7,7 @@ export const typeDefs = gql`
   type Post {
     id: String!
     text: String!
+    author_id: String!
     author_name: String!
     author_avatar: String!
     likes: Int
@@ -45,6 +46,7 @@ export const resolvers: IResolvers = {
         .select(
           'po.id',
           'po.text',
+          'po.author_id',
           'po.author_name',
           'po.author_avatar',
           'po.created_at AS created',
