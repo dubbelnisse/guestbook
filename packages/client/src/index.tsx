@@ -7,10 +7,10 @@ import ApolloClient from 'apollo-boost'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route
 } from "react-router-dom"
 import { parse } from 'query-string'
+import LoginRedirect from './routes/LoginRedirect'
 
 const client = new ApolloClient({
   uri: `${process.env.REACT_APP_API_BASE_URI}/graphql`,
@@ -25,18 +25,13 @@ const client = new ApolloClient({
   }
 })
 
-const setLogin = (bearer: any) => {
-  localStorage.setItem('token', bearer)
-}
-
 const RootApp = () => (
   <ApolloProvider client={client}>
     <Router>
       <Switch>
         <Route path="/auth/github/callback" render={(props) => {
           const { access_token } = parse(props.location.search)
-          setLogin(access_token)
-          return <Redirect to="/" />
+          return <LoginRedirect token={access_token} />
         }}/>
         <Route path="/" component={App} />
       </Switch>

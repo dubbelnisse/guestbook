@@ -47,6 +47,7 @@ export type Post = {
    __typename?: 'Post';
   id: Scalars['String'];
   text: Scalars['String'];
+  author_id: Scalars['String'];
   author_name: Scalars['String'];
   author_avatar: Scalars['String'];
   likes?: Maybe<Scalars['Int']>;
