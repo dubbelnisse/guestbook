@@ -1,39 +1,24 @@
-import got from 'got'
-
 export const setLogin = async (bearer: any) => {
-  console.log('LOGIN')
+  localStorage.setItem('token', bearer)
 
-  const query = `
-    query {
-      user {
-        name
-        id
-        avatar_url
-      }
-    }
-  `
   try {
-    const response: any = await got.post(`${process.env.REACT_APP_API_BASE_URI}/graphql`, {
-      body: JSON.stringify({ query }),
+    const response = await fetch(`https://api.github.com/user`, {
+      method: 'GET',
       headers: {
-        Authorization: `token ${bearer}`,
-      },
-      responseType: 'json',
+        'Authorization': `token ${bearer}`
+      }
     })
 
-    // const user = JSON.parse(response.body)
-    // console.log(response.body)
-    localStorage.setItem('token', bearer)
-  } catch (err) {
-    throw new Error('Unauthorized access!')
-  }
-}
+    const { id, avatar_url, name} = await response.json()
 
-export const storeUser = (user: any) => {
-  console.log(user)
-  localStorage.setItem('userId', user.id)
-  localStorage.setItem('userName', user.name)
-  localStorage.setItem('tokenAvatarUrl', user.avatar_url)
+    localStorage.setItem('userId', id)
+    localStorage.setItem('tokenAvatarUrl', avatar_url)
+    localStorage.setItem('tokenName', name)
+
+    return Promise.resolve()
+  } catch (err) {
+    return Promise.reject(err)
+  }
 }
 
 export const isLoggedIn = () => {
