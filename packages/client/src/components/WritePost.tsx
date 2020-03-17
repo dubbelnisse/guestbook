@@ -33,6 +33,7 @@ const Textarea = styled.textarea`
 
 const Button = styled.button`
   background-color: rgb(255, 0, 130);
+  border-radius: 3px;
   color: rgb(255, 255, 255);
   cursor: pointer;
   padding: 15px 20px;
@@ -49,6 +50,11 @@ const Button = styled.button`
   &:focus {
     outline: none;
   }
+`
+
+const Footer = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `
 
 const WritePost: React.FC = () => {
@@ -78,7 +84,9 @@ const WritePost: React.FC = () => {
     <Wrapper>
       <H1>Make your contribution here!</H1>
       <Textarea value={text} onChange={handleInputChange} placeholder="write something here..." rows={5}></Textarea>
-      <Button onClick={onButtonClick}>POST</Button>
+      <Footer>
+        <Button onClick={onButtonClick}>PUBLISH</Button>
+      </Footer>
     </Wrapper>
   )
 }
