@@ -12,16 +12,15 @@ const LIKE_POST = gql`
 
 const Wrapper = styled.div`
   background-color: rgb(102, 108, 158);
-  border-radius: 50%;
   cursor: pointer;
   position: absolute;
+  border-radius: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  width: 50px;
-  top: 0;
-  right: 0;
+  padding: 5px 10px;
+  top: 30px;
+  right: 30px;
   opacity: 0.8;
   transition: opacity .25s ease-in-out;
   -moz-transition: opacity .25s ease-in-out;
@@ -32,12 +31,8 @@ const Wrapper = styled.div`
   }
 `
 
-const WrapperNoLikes = styled(Wrapper)`
-  opacity: 0.5;
-`;
-
 const Heart = styled.svg`
-  width: 35px;
+  width: 20px;
   fill: rgb(28, 33, 70);
 `
 
@@ -45,11 +40,10 @@ const ActiveHeart = styled(Heart)`
   fill: rgb(255, 0, 130);
 `
 
-const NumberOfLikes = styled.div`
+const Content = styled.div`
   color: rgb(255, 255, 255);
   font-size: 14px;
-  position: absolute;
-  right: 0;
+  margin-left: 10px;
 `
 
 interface LikesProps {
@@ -78,17 +72,18 @@ const Likes: React.FC<LikesProps> = ({ likes, postId }) => {
       <ActiveHeart xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
         <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"/>
       </ActiveHeart>
-      {likes > 1 && <NumberOfLikes>x{likes}</NumberOfLikes>}
+      {likes > 1 && <Content>{likes}</Content>}
     </Wrapper>
     )
   }
 
   return (
-    <WrapperNoLikes onClick={onButtonClick}>
+    <Wrapper onClick={onButtonClick}>
       <Heart xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
         <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"/>
       </Heart>
-    </WrapperNoLikes>
+      <Content>Like</Content>
+    </Wrapper>
   )
 }
 

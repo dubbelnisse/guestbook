@@ -14,15 +14,19 @@ const Wrapper = styled.div`
   padding: 30px;
   margin-top: 40px;
   position: relative;
-`;
+`
 
 const Message = styled.div`
   text-align: left;
-`;
+`
 
 const Name = styled.span`
   font-weight: bold;
   margin-right: 10px;
+`
+
+const Header = styled.div`
+  margin-top: 10px;
 `
 
 const Time = styled.span`
@@ -31,7 +35,7 @@ const Time = styled.span`
 
 const Text = styled.div`
   color: rgb(111, 119, 172);
-  margin-top: 15px;
+  margin-top: 30px;
 `
 
 interface PostProps {
@@ -43,10 +47,10 @@ const Post: React.FC<PostProps> = ({ post }) => {
     <Wrapper>
       <Avatar src={post.author_avatar} alt={post.author_name} />
       <Message>
-        <div>
+        <Header>
           <Name>{post.author_name}</Name>
           <Time>{format(Number(post.created), 'iiii, do MMM y - h:m a')}</Time>
-        </div>
+        </Header>
         <Text>{post.text}</Text>
       </Message>
       <Likes likes={post.likes} postId={post.id} />
