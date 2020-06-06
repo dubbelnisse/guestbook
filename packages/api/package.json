@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "@iteam/config": "^12.1.0",
-    "apollo-server-express": "2.9.6",
+    "apollo-server-express": "2.14.2",
     "express": "4.17.1",
     "github-oauth": "^0.2.2",
     "got": "^10.6.0",
