@@ -21,7 +21,8 @@ export const GET_POSTS = gql`
 
 function Posts() {
   const { loading, error, data } = useQuery(GET_POSTS)
-
+  console.log('GET POSTS')
+  console.log(error)
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error :(</p>
   if (data.posts.length === 0) return <NoPosts />
