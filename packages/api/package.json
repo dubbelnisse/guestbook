@@ -27,7 +27,7 @@
     "apollo-server-express": "2.9.6",
     "express": "4.17.1",
     "github-oauth": "^0.2.2",
-    "got": "^10.6.0",
+    "got": "^11.8.5",
     "graphql-directive-auth": "^0.3.2",
     "knex": "^0.20.11",
     "lodash.merge": "4.6.2",
